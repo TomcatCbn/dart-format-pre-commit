@@ -3,7 +3,7 @@ echo "DIY your git hooks @ pre-commit"
 echo "params is $@"
 
 run_GoFormat() {
-        gf=`dart format $@;`
+        gf=`dart format $@; `
         if test -z "$gf"
         then
                 return
@@ -13,4 +13,5 @@ run_GoFormat() {
         echo "$ga"
 }
 
-run_GoFormat
+run_GoFormat $@
+
