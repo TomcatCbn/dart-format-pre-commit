@@ -1,3 +1,16 @@
-#!/usr/bin/env bash
-PATH=$PATH:/usr/local/bin:/usr/local/sbin
-dart format $@
+#!/bin/sh
+echo "DIY your git hooks @ pre-commit"
+echo "params is $@"
+
+run_GoFormat() {
+        gf=`dart format $@;`
+        if test -z "$gf"
+        then
+                return
+        fi
+        echo "$gf"
+        ga=`git add $@; `
+        echo "$ga"
+}
+
+run_GoFormat
